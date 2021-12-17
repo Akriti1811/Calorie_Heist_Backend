@@ -16,10 +16,7 @@ const userSchema = new mongoose.Schema({
         type:Array,
         default:[],
     },
-    password:{
-        type:String,
-        required:true,
-    },
+    
     address: String,
 
 },{timestamps: true});

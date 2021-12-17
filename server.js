@@ -11,8 +11,6 @@ const  authRoutes = require('./routes/auth');
 //app
 const app = express()
 
-
-
 // db
 
 
@@ -39,7 +37,7 @@ mongoose.connect(uri,connectionParams)
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
+app.use(cors({credentials:true}));
 
 
 

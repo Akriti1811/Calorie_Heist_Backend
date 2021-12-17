@@ -1,12 +1,16 @@
-const express = require('express')
+const express = require('express');
+const { auth } = require('firebase-admin');
 
 
 const router = express.Router();
 
 const {createOrUpdateUser} = require("../controllers/auth");
 
-//route
-router.post('/create-user',createOrUpdateUser);
+const {authCheck}  = require("../middlewares/auth");
+
+
+
+router.post('/create-user',authCheck,createOrUpdateUser);
 
 
 module.exports = router;
