@@ -2,11 +2,11 @@ const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
-    name: String,
     email:{
         type:String,
         required: true,
         index: true,
+        
     },
     role:{
         type: String,
@@ -17,7 +17,7 @@ const userSchema = new mongoose.Schema({
         default:[],
     },
     
-    address: String,
+ 
 
 },{timestamps: true});
 
