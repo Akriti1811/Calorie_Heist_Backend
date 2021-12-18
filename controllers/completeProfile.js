@@ -1,34 +1,25 @@
 const userCompleteProfileSchema = require("../models/userCompleteProfile");
 
 exports.completeProfileController = async (req,res)=> {
-    
-   
 
    const user = JSON.parse(req.profileData.completeProfileData);
-   
-  
-  const email="piyushjaiswal380@gmail.com";
- 
+   const email="piyush8@gmail.com";
+   const users = await userCompleteProfileSchema.findOne({email});   
 
-
-
-   const users = await userCompleteProfileSchema.findOne({email});    
-   
    if(users) {
-       
           console.log(user);
-          await userCompleteProfileSchema.findOneAndUpdate({email},user,{new:true});
-
+         let tmp =  await userCompleteProfileSchema.findOneAndUpdate({email},user,{new:true});
+         console.log(tmp);
+         return res.json(tmp);
    }
+
    else{
      const newUser = await new userCompleteProfileSchema({
          email
      }).save();
-     await userCompleteProfileSchema.findOneAndUpdate({email},user,{new:true});
-     return res.json(newUser);
+      await userCompleteProfileSchema.findOneAndUpdate({email},user,);
+      const newUser2 = await userCompleteProfileSchema.findOne({email});
+     return res.json(newUser2);
    }
-   
-    
-  
 };
 
