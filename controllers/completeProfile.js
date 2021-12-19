@@ -1,5 +1,16 @@
 const userCompleteProfileSchema = require("../models/userCompleteProfile");
+const drinkSchema = require("../models/drink");
+const pizzaSchema = require("../models/pizzas");
+
 exports.completeProfileController = async (req,res)=> {
+
+
+   
+
+
+
+
+
    const user = JSON.parse(req.profileData.completeProfileData);
    const email="piyush8@gmail.com";
    const users = await userCompleteProfileSchema.findOne({email});   
