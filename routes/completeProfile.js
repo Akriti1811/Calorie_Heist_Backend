@@ -13,4 +13,5 @@ const {completeProfile}  = require("../middlewares/completeProfile");
 router.post('/complete-profile',completeProfile,completeProfileController);
 
 
+
 module.exports = router;

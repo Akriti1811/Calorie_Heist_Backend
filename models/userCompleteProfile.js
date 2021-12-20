@@ -5,6 +5,7 @@ const userCompleteProfileSchema = new mongoose.Schema({
     
     name:{
         type:String,
+        
        
     },
     email:{

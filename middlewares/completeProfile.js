@@ -3,11 +3,15 @@ const admin = require('../firebase')
 exports.completeProfile = async (req,res,next) =>{
     
   try{
+
+  //  console.log(req.headers.authtoken);
       
-      req.profileData = req.body;
+     const firebaseUser = await admin.auth().verifyIdToken(req.headers.authtoken)
+    
       
-      
-       next();
+      req.details = req.body;
+      req.email = firebaseUser.email;
+      next();
   }catch(err)
   {
       console.log(err);
