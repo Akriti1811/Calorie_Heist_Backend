@@ -17,6 +17,8 @@ const {intakeAuthCheck}  = require("../middlewares/intakeFood");
 
 const {completeFoodController} = require("../controllers/food");
 
+const {sendAllFood}= require("../controllers/getfood");
+
 const {authCheckFood}  = require("../middlewares/food");
 
 router.get('/drinks',authCheck,sendAllDrinks);
@@ -26,6 +28,8 @@ router.get('/exercises',authCheck,sendAllExercises);
 router.post('/intakeFood',intakeAuthCheck,intakeFood);
 
 router.post('/food',authCheckFood,completeFoodController);
+
+router.get('/food',authCheckFood,sendAllFood);
 
 
 module.exports = router;
