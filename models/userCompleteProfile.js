@@ -21,7 +21,7 @@ const userCompleteProfileSchema = new mongoose.Schema({
         type:String,
     },
     dob:{
-        type:Date,
+        type:String,
     },
     weight:{
         type:Number,
