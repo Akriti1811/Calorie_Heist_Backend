@@ -6,35 +6,24 @@ const intakeFoodSchema = new mongoose.Schema({
       type:String,
       required:true,
       unique:true,
+      index:true,
   },
   dateNo:{
           type:Array,
-          unique:true,
           required:true,
+          meal:{
+               type:Object,
           date:{
               type:String,
               required:true,
           },
           meal:{
-              type:Array,
-              meals:{
-              type:Object,
-              required:true,    
-              mealId:{
                   type:String,
-                  required:true,
-              },
-              gram:{
-                  type:Number,
                   required:true,
               }
             }
+        }
           }
-
-      }
-  }
-
- 
 
 ,{timestamps: true});
 

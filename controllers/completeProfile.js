@@ -18,7 +18,7 @@ if(user) {
 else{
  await userCompleteProfileSchema.create({email},function(err,small){
   console.log(err);
- });
+ }).save();
 
  const user = await userCompleteProfileSchema.findOneAndUpdate({email},update,{new:true});
   return res.json(user);

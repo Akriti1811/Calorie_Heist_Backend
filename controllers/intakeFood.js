@@ -1,42 +1,31 @@
 const intakeFoodSchema = require("../models/intakeFood");
 
-exports.intakeFood = async (req,res)=> {
-
-// console.log(req.email);
-// console.log(req.details);
+exports.intakeFood = async (req, res) => {
 
 
-const data = req.intakeFood;
+    const dates = req.intakeFood.date;
+    const email = req.intakeFood.email;
+    const meal = req.intakeFood.mealid;
+    
+    console.log(dates);
 
+    const ok = await intakeFoodSchema.findOne({email:email},{upsert:false});
+    console.log(ok);
+    if(ok)
+    {
+       const ok2 = await intakeFoodSchema.findOneAndUpdate({email},{$push:{dateNo:[{date:dates,meal:meal}]}},{new:true})
+       return res.json(ok2);
+    }
+    else{
+        const ok2 = await intakeFoodSchema.create({email:email,dateNo:[{date:dates,meal:meal}]},function(err,result){
+            console.log(err);
+            console.log(result);
+            return res.json(result);
+     
+         })
+    }
 
-
-const email = data.email;
-const meal = {
-    mealId:data.meal,
-    gram:data.gram,
-}
-const arrayDemo = [meal];
-const  dateNo = {
-    date:new Date(),
-    meal:arrayDemo,
-}
-const array = [dateNo];
-//console.log(array);
-const obj= {
-    email:email,
-    dateNo:array  
-}
-
-console.log(obj.dateNo[0].meal);
-
-  intakeFoodSchema.create(obj,function(err,small){
-  console.log(err);
-  
- });
-
-  const user = await intakeFoodSchema.findOne({email});
-  return res.json(user);
-
+    
 
 }
 
