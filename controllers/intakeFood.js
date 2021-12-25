@@ -4,7 +4,7 @@ exports.intakeFood = async (req, res) => {
 
 
     const dates = req.intakeFood.date;
-    const email = req.intakeFood.email;
+    const email = req.email;
     const meal = req.intakeFood.mealid;
     
     console.log(dates);

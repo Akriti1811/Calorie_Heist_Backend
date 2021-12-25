@@ -10,6 +10,8 @@ const {sendAllExercises} = require("../controllers/sendAllExercises");
 
 const {intakeFood} = require("../controllers/intakeFood");
 
+const {getIntakeFood} = require("../controllers/getIntakeFood");
+
 const {authCheck}  = require("../middlewares/drink");
 
 const {intakeAuthCheck}  = require("../middlewares/intakeFood");
@@ -30,6 +32,10 @@ router.post('/intakeFood',intakeAuthCheck,intakeFood);
 router.post('/food',authCheckFood,completeFoodController);
 
 router.get('/food',authCheckFood,sendAllFood);
+
+
+
+router.get('/intakeFood',intakeAuthCheck,getIntakeFood);
 
 
 module.exports = router;
